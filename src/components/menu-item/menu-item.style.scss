@@ -6,8 +6,10 @@
 }
 
 .card {
-  overflow: hidden;
   transition: all 0.3s ease-in-out 0s;
+  .oveflow-hidden {
+    overflow: hidden;
+  }
   img {
     transition: all 0.3s ease-in-out 0s;
   }

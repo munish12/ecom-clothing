@@ -13,7 +13,10 @@ export const MenuItem = ({ title, imageUrl, size, imageSize }) => {
         className="mb-4"
       >
         <Card className="h-100">
-          <Card.Img variant="top" src={imageUrl} />
+          <div className="oveflow-hidden">
+            <Card.Img variant="top" src={imageUrl} />
+          </div>
+
           <Card.Body>
             <Card.Title>{title.toUpperCase()}</Card.Title>
             <Button variant="primary">Shop Now</Button>
