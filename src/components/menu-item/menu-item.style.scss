@@ -1,0 +1,20 @@
+.adjust-image {
+  img {
+    height: 388px;
+    object-fit: cover;
+  }
+}
+
+.card {
+  overflow: hidden;
+  transition: all 0.3s ease-in-out 0s;
+  img {
+    transition: all 0.3s ease-in-out 0s;
+  }
+  &:hover {
+    box-shadow: 0 0 16px 0 #c0c0c0;
+    img {
+      transform: scale(1.05);
+    }
+  }
+}
