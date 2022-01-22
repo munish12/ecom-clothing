@@ -5,7 +5,6 @@ import MenuItem from "../menu-item/menu-item.component";
 export default class Directory extends Component {
   constructor() {
     super();
-
     this.state = {
       sections: [
         {
