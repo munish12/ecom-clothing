@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
-import { MenuItem } from "../menu-item/menu-item.component";
+import MenuItem from "../menu-item/menu-item.component";
 
 export default class Directory extends Component {
   constructor() {
@@ -12,7 +12,7 @@ export default class Directory extends Component {
           title: "hats",
           imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
           id: 1,
-          linkUrl: "shop/hats",
+          linkUrl: "hats",
         },
         {
           title: "jackets",
@@ -48,8 +48,8 @@ export default class Directory extends Component {
     return (
       <>
         <Row className="mt-4">
-          {this.state.sections.map(({ title, imageUrl, id, size ,imageSize}) => (
-            <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} imageSize={imageSize} />
+          {this.state.sections.map(({ id, ...otherSectionProps }) => (
+            <MenuItem key={id} {...otherSectionProps} />
           ))}
         </Row>
       </>

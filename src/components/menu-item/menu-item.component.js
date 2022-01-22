@@ -1,16 +1,26 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
+import { withRouter } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import "./menu-item.style.scss";
 
-export const MenuItem = ({ title, imageUrl, size, imageSize }) => {
+const MenuItem = ({
+  title,
+  imageUrl,
+  size,
+  imageSize,
+  history,
+  linkUrl,
+  match,
+}) => {
   return (
     <>
       <Col
         md={`${size ? "6 adjust-image" : "4"}`}
         // className={`mb-4 ${imageSize ? "adjust-image" : ""}`}
         className="mb-4"
+        onClick={() => history.push(`${match.url}${linkUrl}`)}
       >
         <Card className="h-100">
           <div className="oveflow-hidden">
@@ -26,3 +36,5 @@ export const MenuItem = ({ title, imageUrl, size, imageSize }) => {
     </>
   );
 };
+
+export default withRouter(MenuItem);
