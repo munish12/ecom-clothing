@@ -15,11 +15,11 @@ export default class shopPage extends Component {
   render() {
     const { collections } = this.state;
     return (
-     <Container fluid className="shop-page py-5">
+      <Container fluid className="shop-page px-lg-5">
         {collections.map(({ id, ...otherCollectionsProps }) => (
           <CollectionPreview key={id} {...otherCollectionsProps} />
         ))}
-     </Container>
+      </Container>
     );
   }
 }
