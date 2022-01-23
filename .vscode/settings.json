@@ -1,0 +1,4 @@
+{
+    "autoimport.filesToScan": "**/*.{js,jsx}",
+    "npm-intellisense.packageSubfoldersIntellisense": true
+}

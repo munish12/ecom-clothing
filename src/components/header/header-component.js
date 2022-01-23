@@ -2,11 +2,12 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import { Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { auth } from "../../firebase/firebase.utils";
 import "./header-style.scss";
 import Image from "react-bootstrap/Image";
 import Logo from "../../assets/images/logo.svg";
 
-export const Header = () => {
+export const Header = ({ currentUser }) => {
   return (
     <>
       <Navbar fixed="top" bg="light" expand="lg">
@@ -23,9 +24,16 @@ export const Header = () => {
               <Link to="/contact" className="nav-link">
                 CONTACT
               </Link>
-              <Link to="/signin" className="nav-link">
-                SIGNIN
-              </Link>
+
+              {currentUser ? (
+                <div style={{cursor: "pointer"}}  className="nav-link" onClick={() => auth.signOut()}>
+                  SIGNOUT
+                </div>
+              ) : (
+                <Link to="/signin" className="nav-link">
+                  SIGNIN
+                </Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
