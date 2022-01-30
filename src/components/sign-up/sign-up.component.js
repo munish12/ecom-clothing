@@ -18,7 +18,7 @@ export default class SignUp extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("got email");
+    // console.log("got email");
     const { displayName, email, password, confirmPassword } = this.state;
     if (password !== confirmPassword) {
       alert("password dont match");
