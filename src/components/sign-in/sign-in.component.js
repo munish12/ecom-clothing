@@ -2,21 +2,28 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import { CustomButton } from "../../components/custom-button/custom-button.component";
 import { FormInput } from "../form-input/form-input.component";
-import { SignInWithGoogle } from "../../firebase/firebase.utils";
+import { SignInWithGoogle, auth } from "../../firebase/firebase.utils";
 import "./sign-in.style.scss";
 
 export default class SignIn extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       email: "",
-      pasword: "",
+      password: "",
     };
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    this.setState({ email: "", pasword: "" });
+    // this.setState({ email: "", password: "" });
+    const { email, password } = this.state;
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: "", password: "" });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   handleChange = (event) => {
@@ -33,29 +40,37 @@ export default class SignIn extends Component {
           <Form onSubmit={this.handleSubmit}>
             <FormInput
               value={this.state.email}
-              handleChange={this.handleChange}
+              onChange={this.handleChange}
               type="Email"
               placeholder="Enter email"
               name="email"
               label="Email"
               required
+              autoComplete="off"
             />
             <FormInput
               value={this.state.password}
-              handleChange={this.handleChange}
+              onChange={this.handleChange}
               type="password"
               placeholder="Enter password"
               name="password"
               label="Password"
               required
+              autoComplete="off"
             />
-          </Form>
-          <CustomButton variant="dark" type="submit" size="lg px-5 mt-4 me-3">
-            Sign in
-          </CustomButton>
-          <CustomButton variant="outline-dark" onClick={SignInWithGoogle}  size="lg px-5 mt-4">
+            <CustomButton variant="dark" type="submit" size="lg px-5 mt-4 me-3">
+              Sign in
+            </CustomButton>
+            <CustomButton
+            variant="outline-dark"
+            onClick={SignInWithGoogle}
+            size="lg px-5 mt-4"
+          >
             Sign in With Google
           </CustomButton>
+          </Form>
+
+   
         </div>
       </>
     );
